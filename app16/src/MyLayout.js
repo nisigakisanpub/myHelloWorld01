@@ -27,7 +27,9 @@ const useStyles = makeStyles(() => {
       display: "none",
     },
     appBar: {
+      paddingLeft:  drawerWidth,
       zIndex: (theme) => theme.zIndex.drawer + 1,
+
     },
     drawer: {
       width: (theme) => theme.drawerWidth,
