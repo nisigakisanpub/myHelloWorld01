@@ -128,7 +128,7 @@ https://qiita.com/tanaShoe/items/76670d28ab2aa8d80b67#%E5%8F%82%E8%80%83-%E3%82%
 ### app18
 React AppBar & Drawer ＋ 画面遷移　仕掛中  
 src/ App.js  MenuLayout.js  Page1.js  Page2.js  
-こっちのレイアウト使ってるはず
+こっちのレイアウト使ってるはず  
 ↓
 #### 参考
 https://smartdevpreneur.com/the-definitive-tutorial-to-the-material-ui-drawer-component/  
