@@ -74,12 +74,6 @@ How to Position an MUI Drawer Under AppBar (Responsive Sizing!)
 
 ### app19
 app14 (Django モデルが入れ子の時のシリアライザ ＋ login/ 時のCSRF) の続き。CSRF を無効化した  
-apps.py
-```
-class DisableCSRF(MiddlewareMixin):
-    def process_request(self, request):
-        setattr(request, '_dont_enforce_csrf_checks', True)
-```
 curl 例は個別ページへ
 
 
