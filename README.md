@@ -76,4 +76,8 @@ How to Position an MUI Drawer Under AppBar (Responsive Sizing!)
 app14 (Django モデルが入れ子の時のシリアライザ ＋ login/ 時のCSRF) の続き。CSRF を無効化した  
 curl 例は個別ページへ
 
+### app20
+MUI 連動Select　app12 の使い回し。
+
+
 
