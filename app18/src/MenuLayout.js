@@ -2,18 +2,21 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@mui/styles";
 import { useTheme } from "@mui/material/styles";
 import clsx from "clsx";
-import Drawer from "@mui/material/Drawer";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import {
+  Drawer,
+  AppBar,
+  Toolbar,
+  List,
+  Typography,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import AppsIcon from "@mui/icons-material/Apps";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 const transitionDuration = 1000; //can also use theme.transitions.duration
@@ -113,14 +116,35 @@ export default function MenuLayout({ children }) {
         <Toolbar />
         <div>
           <List>
-            {["Home", "Page 1", "Page 2", "Page 3"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  <AppsIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+
+            <ListItem button key="1">
+              <ListItemIcon>
+                <AppsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+
+            <ListItem button key="2" component={Link} to="/page1">
+              <ListItemIcon>
+                <AppsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Page 1" />
+            </ListItem>
+
+            <ListItem button key="3" component={Link} to="/page2">
+              <ListItemIcon>
+                <AppsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Page 2" />
+            </ListItem>
+
+            <ListItem button key="4">
+              <ListItemIcon>
+                <AppsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Page 3" />
+            </ListItem>
+
           </List>
         </div>
       </Drawer>
@@ -130,4 +154,4 @@ export default function MenuLayout({ children }) {
       </main>
     </div>
   );
-};
+}
