@@ -138,7 +138,7 @@ export default function MenuLayout({ children }) {
               <ListItemText primary="Page 2" />
             </ListItem>
 
-            <ListItem button key="4">
+            <ListItem button key="4" component={Link} to="/page3">
               <ListItemIcon>
                 <AppsIcon />
               </ListItemIcon>
