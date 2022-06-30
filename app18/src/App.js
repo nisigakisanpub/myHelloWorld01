@@ -1,27 +1,26 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import Home from "./Home";
 import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 
-export const ChangeContext = React.createContext();
+export const MyContext = React.createContext();
 
 function App() {
-  const [chageContext, setChangeContext] = React.useState("");
+  const [contextVal, setContextVal] = React.useState("");
 
   return (
     <div>
-
+      <MyContext.Provider value={{ contextVal, setContextVal }}>
         <BrowserRouter>
-          <Switch>
-            <Route path="/" component={Page1} exact />
-            <Route path="/page1" component={Page1} exact />
-            <Route path="/page2" component={Page2} exact />
-            <Route path="/page3" component={Page3} exact />
-          </Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/page1" component={Page1} exact />
+          <Route path="/page2" component={Page2} exact />
+          <Route path="/page3" component={Page3} exact />
         </BrowserRouter>
-
+      </MyContext.Provider>
     </div>
   );
 }
@@ -29,7 +28,6 @@ function App() {
 export default App;
 
 /*
-      <ChangeContext.Provider value={{ chageContext, setChangeContext }}>
-      </ChangeContext.Provider>
+          <Route path="/" render={() => <Page1 isMenu={true}/>} exact  />
 
 */

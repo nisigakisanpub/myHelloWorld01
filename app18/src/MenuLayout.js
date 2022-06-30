@@ -101,7 +101,7 @@ export default function MenuLayout({ children }) {
       <Drawer
         //add full width for responsive
         className={classes.drawer}
-        variant="temporary"
+        variant="permanent"
         //elevation={3} only works with variant="temporary"
         open={open}
         transitionDuration={{
@@ -116,20 +116,21 @@ export default function MenuLayout({ children }) {
         <Toolbar />
         <div>
           <List>
-
-            <ListItem button key="1">
+            <ListItem button key="1" component={Link} to="/">
               <ListItemIcon>
                 <AppsIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
 
-            <ListItem button key="2" component={Link} to="/page1">
-              <ListItemIcon>
-                <AppsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Page 1" />
-            </ListItem>
+            <Link to={{ pathname: "/page1", state: { isMenu: true } }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <AppsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Page 1" />
+              </ListItem>
+            </Link>
 
             <ListItem button key="3" component={Link} to="/page2">
               <ListItemIcon>
@@ -144,7 +145,6 @@ export default function MenuLayout({ children }) {
               </ListItemIcon>
               <ListItemText primary="Page 3" />
             </ListItem>
-
           </List>
         </div>
       </Drawer>
