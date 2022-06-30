@@ -65,10 +65,8 @@ https://qiita.com/tanaShoe/items/76670d28ab2aa8d80b67#%E5%8F%82%E8%80%83-%E3%82%
 
 ### app18
 React AppBar & Drawer ＋ 画面遷移 ＋ useContext  
-src/ App.js  MenuLayout.js  Page1.js  Page2.js  
-こっちのレイアウト使ってるはず  
-↓
-#### 参考
+
+#### 参考（こっちのレイアウト使ってるはず）
 https://smartdevpreneur.com/the-definitive-tutorial-to-the-material-ui-drawer-component/  
 How to Position an MUI Drawer Under AppBar (Responsive Sizing!)
 
