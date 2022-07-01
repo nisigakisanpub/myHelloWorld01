@@ -8,6 +8,11 @@ import Page3 from "./Page3";
 
 export const MyContext = React.createContext();
 
+export var locationKey = "";
+export function setLocationKey(value) {
+  locationKey = value;
+}
+
 function App() {
   const [contextVal, setContextVal] = React.useState("");
 

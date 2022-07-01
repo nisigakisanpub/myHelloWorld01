@@ -1,22 +1,41 @@
 import React from "react";
-import { MyContext } from "./App";
 import { TextField, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import MenuLayout from "./MenuLayout";
 
+import { MyContext } from "./App";
+import { locationKey, setLocationKey } from "./App";
+import usePrevious from "./usePrevious";
+
 const Page1 = (props) => {
-  const { isMenu } = props;
   const location = useLocation();
   console.log(location);
   console.log(props);
-  // const { isMenu } = location.state;
 
+  /** Contextの利用 */
   const { contextVal, setContextVal } = React.useContext(MyContext);
   //const [value, setValue] = React.useState("default");
 
+  /** PerformanceNavigationTimingを利用してブラウザバック検出しようとしたがNG */
+  var perfEntries = performance.getEntriesByType("navigation");
+  //const lastEntry = perfEntries.slice(-1)[0];
+  const lastEntry = perfEntries[0];
+
   React.useEffect(() => {
-    console.log("ueEffect@Page1" + "isMenu:");
-  }, []);
+    console.log(
+      "ueEffect@Page1 " + "location: " + locationKey + " -> " + location.key
+    );
+    setLocationKey(location.key);
+
+    /** pageshowイベント取れず */
+    // window.addEventListener('pageshow', (event) => {
+    //   if (event.persisted) {
+    //     console.log('This page was restored from the bfcache.');
+    //   } else {
+    //     console.log('This page was loaded normally.');
+    //   }
+    // });
+  });
 
   function onChangeText(event) {
     const text = event.target.value;
@@ -35,6 +54,7 @@ const Page1 = (props) => {
         />
         <Typography>現在：{contextVal}</Typography>
         <Typography>location：{location.pathname}</Typography>
+        <Typography>どうやってたどり着いた：{lastEntry.type}</Typography>
       </div>
     </MenuLayout>
   );

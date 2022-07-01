@@ -17,6 +17,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "react-router-dom";
+import { MyContext } from "./App";
 
 const drawerWidth = 240;
 const transitionDuration = 1000; //can also use theme.transitions.duration
@@ -123,7 +124,7 @@ export default function MenuLayout({ children }) {
               <ListItemText primary="Home" />
             </ListItem>
 
-            <Link to={{ pathname: "/page1", state: { isMenu: true } }}>
+            <Link to={{ pathname: "/page1" }}>
               <ListItem button>
                 <ListItemIcon>
                   <AppsIcon />

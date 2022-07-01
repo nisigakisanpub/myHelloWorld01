@@ -9,7 +9,7 @@ const Page2 = () => {
   const { contextVal, setContextVal } = React.useContext(MyContext);
 
   React.useEffect(() => {
-    console.log("ueEffect@Page2");
+    console.log("ueEffect@Page2 ");
   }, []);
 
   return (
