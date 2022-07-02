@@ -65,6 +65,10 @@ https://qiita.com/tanaShoe/items/76670d28ab2aa8d80b67#%E5%8F%82%E8%80%83-%E3%82%
 
 ### app18
 React AppBar & Drawer ＋ 画面遷移 ＋ useContext  
+ドロワーのメニューからの遷移と、ブラウザバックの遷移を、識別できたと思う。
+- location.key を利用する
+- App.js にグローバル変数と setter を用意する
+- usePrevious Hook は、useState してる変数にしか効かないのではないか？使えなかった。
 
 #### 参考（こっちのレイアウト使ってるはず）
 https://smartdevpreneur.com/the-definitive-tutorial-to-the-material-ui-drawer-component/  
