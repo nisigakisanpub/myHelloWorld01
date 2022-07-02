@@ -18,14 +18,14 @@ function App() {
 
   return (
     <div>
-      <MyContext.Provider value={{ contextVal, setContextVal }}>
-        <BrowserRouter>
-          <Route path="/" component={Home} exact />
+      <BrowserRouter>
+        <Route path="/" component={Home} exact />
+        <MyContext.Provider value={{ contextVal, setContextVal }}>
           <Route path="/page1" component={Page1} exact />
           <Route path="/page2" component={Page2} exact />
-          <Route path="/page3" component={Page3} exact />
-        </BrowserRouter>
-      </MyContext.Provider>
+        </MyContext.Provider>
+        <Route path="/page3" component={Page3} exact />
+      </BrowserRouter>
     </div>
   );
 }
