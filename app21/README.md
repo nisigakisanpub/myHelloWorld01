@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+## Django アプリ開始まで
+```
+python3 -m venv ven
+. ven/bin/activate
+pip install -r requirments.txt
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+python manage.py makemigrations apiv1
+python manage.py sqlmigrate apiv1 0001
+python manage.py migrate
+python manage.py runserver
 
-## Available Scripts
+python manage.py createsuperuser --username admin1 --email admin1@example.com
+password456
+python manage.py createsuperuser --username admin2 --email admin2@example.com
+password789
+```
 
-In the project directory, you can run:
+## Django shell
+```
+from django.contrib.auth.models import User
+user = User.objects.all()[0]
+from apiv1.models import PDFdocument
+doc = PDFdocument(display_name='文書1', catefory='カテゴリ01', owner=user)
+doc.save()
+doc = PDFdocument(display_name='文書2', catefory='カテゴリ02', owner=user)
+doc.save()
+```
 
-### `npm start`
+## Django POST 例
+```
+curl -X POST -d "{}" -H "Content-Type:application/json" -H "indent=4" http://127.0.0.1:8000/api/v1/endpoint1/
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Django CORS 対策
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+pip install django-cors-headers
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+INSTALLED_APPS = [
+    ・・・   
+    'rest_framework',
+    'api',
+    'corsheaders', # ここに追加
+　　・・・
+]
 
-### `npm run build`
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # ここに追加
+    'django.middleware.security.SecurityMiddleware',
+    ・・・
+]
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000', # ここに追加
+]
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### CORS 参考
+<https://www.stackhawk.com/blog/django-cors-guide/>  
+Django CORS Guide: What It Is and How to Enable It
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### CORS トラブル対策
 
-### `npm run eject`
+Request header field 「access-control-allow-origin」 is not allowed by Access-Control-Allow-Headers in preflight response.  
+↓
+```
+CORS_ALLOW_HEADERS = [
+'accept',
+'accept-encoding',
+'authorization',
+'content-type',
+'dnt',
+'origin',
+'user-agent',
+'x-csrftoken',
+'x-requested-with',
+'Access-Control-Allow-Origin',
+]
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
