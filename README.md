@@ -85,5 +85,8 @@ MUI 連動Select　app12 の使い回し。
 app13　を改修して frontend。axios APICALL 実装。Edit可能な DataGrid さらにカスタマイズ・Dialog。  
 app19　を改修して backend。
 
+### app22
+frontend＋backend。axios APICALL 実装。app21 をコピーした後、frontend は app18 をコピー。
+
 
 
